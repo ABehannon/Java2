@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <service android:name="JSONService"></service>
+        <provider android:name="InfoProvider" android:authorities='com.behannon.wordsearch.infoprovider'></provider>
         
         
     </application>

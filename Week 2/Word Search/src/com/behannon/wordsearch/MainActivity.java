@@ -112,7 +112,9 @@ public class MainActivity extends Activity {
 										//Check and get JSON data
 										JSONObject results = json.getJSONObject("term0").getJSONObject("PrincipalTranslations").getJSONObject("0").getJSONObject("OriginalTerm");
 										System.out.println("RESULTS: " + results);
-										displayInfo();
+										
+										Cursor cursor = getContentResolver().query(InfoProvider.DictionaryData.CONTENT_URI, null, null, null, null);
+									
 									}
 								} catch (JSONException e) {
 									columnText1.setText("Error");
@@ -141,65 +143,6 @@ public class MainActivity extends Activity {
 		});
 	
 	}
-	
-	//Displays info from JSON file
-	public void displayInfo() {
-		
-		EditText searchBox = (EditText) findViewById(R.id.searchBox);
-		TextView columnText1 = (TextView) findViewById(R.id.columnText1);
-		TextView columnText2 = (TextView) findViewById(R.id.columnText2);
-		Spinner spinner = (Spinner) findViewById(R.id.optionSpinner);
-		
-		//Get spinner choice
-		final String spinnerChoice = spinner.getSelectedItem().toString();
-		System.out.println("SPINNER: " + spinnerChoice);
-		
-		//Spinner choice for URI
-		if(spinnerChoice == "All Languages")
-		{
-			//Tell spinner choice
-			System.out.println("SPINNER (displayInfo): " + spinnerChoice);
-			
-			Uri uri = Uri.parse("content://com.behannon.wordsearch.infoprovider/items");
-			
-			Cursor _Cursor = getContentResolver().query(uri, null, null, null, null);
-			
-			//Arrays for displaying
-			langList = new ArrayList<String>();
-			defList = new ArrayList<String>();
-			
-			//pulls items from cursor
-			if (_Cursor.moveToFirst() == true)
-			{
-				for (int i = 0; i < _Cursor.getCount(); i++)
-				{
-					String lang = _Cursor.getString(1);
-					String def = _Cursor.getString(2);
-
-					langList.add(lang);
-					defList.add(def);
-					
-					_Cursor.moveToNext();
-
-				}
-			}
-			
-			//test the setup
-			String test = langList.get(0);
-			
-			columnText1.setText(test);
-
-		}
-		
-		else if(spinnerChoice == "English" || spinnerChoice == "French")
-		{
-			//Tell spinner choice
-			System.out.println("SPINNER: " + spinnerChoice);
-			
-		}
-		
-	}
-		
 	
 	//Called to test internet when button pressed or app started
 	private void testConnection() {
