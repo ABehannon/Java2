@@ -4,6 +4,7 @@
 
 package com.behannon.quoter;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -49,8 +50,8 @@ public class MainActivity extends Activity {
 		testConnection();
 		
 		//setup button for xml of main activity
-		Button searchButton = (Button) findViewById(R.id.backButton);
-		
+		Button searchButton = (Button) findViewById(R.id.searchButton);
+		Button intentButton = (Button) findViewById(R.id.intentButton);
 		
 		//on click listener for main activity
 		searchButton.setOnClickListener(new View.OnClickListener() {
@@ -129,10 +130,23 @@ public class MainActivity extends Activity {
                 }
 			}
 		});
+		
+		//on click listener for main activity implicit intent
+		intentButton.setOnClickListener(new View.OnClickListener() {
+				
+			public void onClick(View v) {
+				String url = "http://quotesondesign.com/";
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(url));
+				startActivity(i);
+			}
+		});
 	}
 
 	//Called to test internet when button pressed or app started
 	public void testConnection(){
+		
+		Button intentButton = (Button) findViewById(R.id.intentButton);
 		
 		if (_connected){
 			
@@ -142,7 +156,8 @@ public class MainActivity extends Activity {
 		} else {
 
 			Toast.makeText(getApplicationContext(), "You are not currently connected to the internet. Searching will not work, but you may still be able to load your last saved definition.", Toast.LENGTH_LONG).show();
-        	System.out.println("OFFLINE");
+        	intentButton.setEnabled(false);
+			System.out.println("OFFLINE");
         	
 		}
 	}
