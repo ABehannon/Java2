@@ -10,13 +10,21 @@ import com.behannon.libs.FileSaving;
 import com.behannon.libs.QuoteProvider;
 import com.behannon.libs.WebCheck;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +43,20 @@ public class SecondActivity extends Activity {
 		
 		Cursor cursor = getContentResolver().query(QuoteProvider.QuoteData.CONTENT_URI, null, null, null, null);
 		displayQuoteData(cursor);
+		
+		//setup button for xml of main activity
+				Button backButton = (Button) findViewById(R.id.backButton);
+				
+				
+				//on click listener for main activity
+				backButton.setOnClickListener(new View.OnClickListener() {
+				
+					public void onClick(View v) {
+						
+						finish();
+						
+					}
+				});
 
 	}
 	

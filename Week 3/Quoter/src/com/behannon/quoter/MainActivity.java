@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.behannon.libs.QuoteProvider;
 import com.behannon.libs.WebCheck;
-import com.behannon.libs.FileSaving;
 
 public class MainActivity extends Activity {
 
