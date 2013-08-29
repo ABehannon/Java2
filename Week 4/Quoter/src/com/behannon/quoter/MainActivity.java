@@ -6,6 +6,7 @@ package com.behannon.quoter;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.Window;
 
@@ -102,6 +103,7 @@ public class MainActivity extends Activity {
 	}
 	
 	//Called when the quote of the moment listview item is clicked
+	@SuppressLint("HandlerLeak")
 	public void quoteButton() {
 		
 		_connected = WebCheck.getConnectionStatus(_context);
@@ -111,6 +113,7 @@ public class MainActivity extends Activity {
 						
 		Handler serviceHandler = new Handler(){
 		                		
+			@SuppressWarnings("unused")
 			public void handleMessage(Message message) {
 		                			
 				if(message.arg1 == RESULT_OK && message.obj != null) {

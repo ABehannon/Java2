@@ -63,6 +63,9 @@ public class QuoteFragment extends Fragment {
 	    		
 	    		System.out.println("Save Data: " + MixedData);
 	    		FileSaving.storeStringFile(getActivity(), "favoriteData", MixedData, false);
+	    		
+	    		Toast.makeText(getActivity().getApplicationContext(), "This quote has been saved as your favorite.", Toast.LENGTH_LONG).show();
+				
 	        }
 	    });
 		

@@ -30,13 +30,11 @@
         
          <activity
             android:name="com.behannon.quoter.SecondActivity"
-            android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
         </activity>
         
          <activity
             android:name="com.behannon.quoter.ThirdActivity"
-            android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
         </activity>
         
