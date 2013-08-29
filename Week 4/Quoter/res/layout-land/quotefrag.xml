@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    <fragment 
+    	android:id="@+id/Quote_Fragment"
+    	android:name="com.behannon.quoter.QuoteFragment"
+    	android:layout_width="0dp"
+    	android:layout_weight="1"
+   	 	android:layout_height="match_parent" >
+   	 	</fragment>
+   	 	
+    <fragment 
+    	android:id="@+id/Offline_Fragment"
+    	android:name="com.behannon.quoter.OfflineFragment"
+   		android:layout_width="0dp"
+    	android:layout_weight="1"
+  		android:layout_height="match_parent" >
+  		</fragment>
+
+</LinearLayout>
